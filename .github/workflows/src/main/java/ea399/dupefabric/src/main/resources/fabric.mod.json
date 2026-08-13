@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "dupefabric",
+  "version": "${version}",
+  "name": "DupeFabric",
+  "description": "Local item duplication test utility for Fabric.",
+  "authors": [
+    "EA399"
+  ],
+  "license": "MIT",
+  "environment": "client",
+
+  "entrypoints": {
+    "client": [
+      "ea399.dupefabric.DupeFabricClient"
+    ]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
