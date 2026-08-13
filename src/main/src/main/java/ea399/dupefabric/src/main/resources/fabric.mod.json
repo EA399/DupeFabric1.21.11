@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "name": "DupeFabric",
   "description": "Dupe test mod",
+  "authors": ["EA399"],
   "environment": "client",
   "entrypoints": {
     "client": [
