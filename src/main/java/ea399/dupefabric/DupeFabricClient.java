@@ -1,51 +1,19 @@
-package ea399.dupefabric;
+private static void duplicateSelectedItem(MinecraftClient client) {
+    if (client.player == null) return;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.util.InputUtil;
-import net.minecraft.item.ItemStack;
-import org.lwjgl.glfw.GLFW;
+    client.player.sendMessage(
+            net.minecraft.text.Text.literal("DupeFabric: G gedrückt!"),
+            true
+    );
 
-public class DupeFabricClient implements ClientModInitializer {
+    int slot = client.player.getInventory().getSelectedSlot();
+    ItemStack original = client.player.getInventory().getStack(slot);
 
-    private static KeyBinding dupeKey;
+    if (original.isEmpty()) return;
 
-    @Override
-    public void onInitializeClient() {
-        dupeKey = KeyBindingHelper.registerKeyBinding(
-                new KeyBinding(
-                        "key.dupefabric.duplicate",
-                        InputUtil.Type.KEYSYM,
-                        GLFW.GLFW_KEY_G,
-                      KeyBinding.Category.MISC
-                )
+    ItemStack duplicate = original.copy();
+    int count = Math.min(original.getCount() * 2, duplicate.getMaxCount());
 
-
-            
-        );
-
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while (dupeKey.wasPressed()) {
-                duplicateSelectedItem(client);
-            }
-        });
-    }
-
-    private static void duplicateSelectedItem(MinecraftClient client) {
-        if (client.player == null) return;
-
-        int slot = client.player.getInventory().getSelectedSlot();
-        ItemStack original = client.player.getInventory().getStack(slot);
-
-        if (original.isEmpty()) return;
-
-        ItemStack duplicate = original.copy();
-        int count = Math.min(original.getCount() * 2, duplicate.getMaxCount());
-
-        duplicate.setCount(count);
-        client.player.getInventory().setStack(slot, duplicate);
-    }
+    duplicate.setCount(count);
+    client.player.getInventory().setStack(slot, duplicate);
 }
