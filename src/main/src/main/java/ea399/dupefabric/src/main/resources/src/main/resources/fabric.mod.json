@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "dupefabric",
+  "version": "1.0.0",
+  "name": "DupeFabric",
+  "description": "Dupe test mod",
+  "authors": ["EA399"],
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "ea399.dupefabric.DupeFabricClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "fabric-api": "*",
+    "minecraft": "1.21.11",
+    "java": ">=21"
+  }
+}
