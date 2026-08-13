@@ -40,3 +40,10 @@ java {
     targetCompatibility = JavaVersion.VERSION_21
     withSourcesJar()
 }
+
+/*
+ * Make sure resources are included in the final mod JAR.
+ */
+tasks.named('jar') {
+    from(sourceSets.main.output.resourcesDir)
+}
