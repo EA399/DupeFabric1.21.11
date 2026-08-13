@@ -20,7 +20,7 @@ public class DupeFabricClient implements ClientModInitializer {
                         "key.dupefabric.duplicate",
                         InputUtil.Type.KEYSYM,
                         GLFW.GLFW_KEY_G,
-                      "KeyBinding.Category.MIS
+                      KeyBinding.Category.MISC
                 )
 
 
